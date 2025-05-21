@@ -12,11 +12,11 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/h2-console/**","/teste","/user").permitAll() // Libera o acesso ao H2 Console
-                        .anyRequest().authenticated() // Mantém segurança para outras rotas
+                        .requestMatchers("/h2-console/**","/teste","/user").permitAll()
+                        .anyRequest().authenticated()
                 )
-                .csrf(csrf -> csrf.disable()) // Desativa CSRF para o H2
-                .headers(headers -> headers.frameOptions().disable()); // Permite frames
+                .csrf(csrf -> csrf.disable())
+                .headers(headers -> headers.frameOptions().disable());
 
         return http.build();
     }
